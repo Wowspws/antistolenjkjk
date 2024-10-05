@@ -1,0 +1,21 @@
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+workspace.FallenPartsDestroyHeight = "-nan"
+game.Players.LocalPlayer.Character:WaitForChild("Humanoid").AnimationPlayed:Connect(function(d)
+if d.Animation.AnimationId == "rbxassetid://11343250001" then
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "yo", 
+    Text = "Death Counter detected making you immortal..", 
+    Icon = "" 
+})
+
+local ogcf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+ task.wait(3)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,-100000,0)
+task.wait(3)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = ogcf
+end
+end)
+end)
+
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
